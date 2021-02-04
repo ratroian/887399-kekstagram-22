@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Ruslan Troyan](https://up.htmlacademy.ru/javascript/22/user/887399).
-* Наставник: `Неизвестно`.
+* Наставник: [RAMAN LAURYNIUK](https://htmlacademy.ru/profile/id1666565).
 
 ---
 
