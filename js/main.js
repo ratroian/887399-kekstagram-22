@@ -1,6 +1,9 @@
 
 // Источник https://learn.javascript.ru/task/random-int-min-max
 
+let minValue = 1;
+let maxValue = 14;
+
 let randomInteger = function (min, max) {
   // получить случайное число от (min-0.5) до (max+0.5)
   if (min < max) {
@@ -9,7 +12,9 @@ let randomInteger = function (min, max) {
   } else {
     alert('Значение ' + min + 'должно быть больше ' + max)
   }
-}
+};
+
+randomInteger (minValue, maxValue);
 
 // Длина строки (авторская=))
 
