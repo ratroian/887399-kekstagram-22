@@ -11,8 +11,6 @@ let randomInteger = function (min, max) {
   }
 }
 
-console.log( randomInteger(1, 3) );
-
 // Длина строки (авторская=))
 
 let stringComment = ('Определенное количество символов');
@@ -27,4 +25,3 @@ let returnLengthString = function (workString, maxLength) {
 };
 
 returnLengthString(stringComment, lengthLimit);
-console.log(returnLengthString);
