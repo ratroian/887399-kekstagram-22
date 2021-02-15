@@ -14,7 +14,7 @@ let randomInteger = function (min, max) {
   }
 };
 
-randomInteger (minValue, maxValue);
+randomInteger(minValue, maxValue);
 
 // Длина строки (авторская=))
 
