@@ -27,19 +27,26 @@ const COMENTS = ['Всё отлично!',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 
 const createObject = () => {
-  const randomIndex = _.random(0, ID_OBJECTS.length - 1);
-  const randomLinks = _.random(0, LINKS.length - 1);
-  const randomComents = _.random(0, COMENTS.length - 1);
+
+  const getRandomArrayElement = (elements) => {
+    return elements[_.random(0, elements.length - 1)];
+  };
+
+  const getArrayElement = (elements) => {
+    for (let i = 0; i < ID_OBJECTS.length; i++) {
+      elements[i++]
+    }
+  };
 
   return {
-    id: ID_OBJECTS[randomIndex],
-    url: 'photos/' + LINKS[randomLinks] + '.jpg',
-    description: 'Нормальное описание к фото №' + LINKS[randomLinks],
+    id: getRandomArrayElement(ID_OBJECTS),
+    url: 'photos/' + getRandomArrayElement(LINKS) + '.jpg',
+    description: 'Нормальное описание к фото №' + getRandomArrayElement(LINKS),
     likes: _.random(15, 200),
     comments: {
       id: _.random(1, 200),
       avatar: 'img/avatar' + _.random(1, 6) + '.svg',
-      message: COMENTS[randomComents],
+      message: getRandomArrayElement(COMENTS),
       name: 'Артем' + _.random(1, 6),
     },
   };
@@ -49,8 +56,10 @@ console.log(createObject());
 
 const TOTAL_OBJECT = 25;
 
-const similarObjects = new Array(TOTAL_OBJECT).fill(null).map(() => createObject());
-
+const similarObjects = new Array(TOTAL_OBJECT).fill(null);
+// .map(() => createObject())
+const uniqObject = similarObjects;
+if (uniqObject !== similarObjects) {similarObjects.map(() => createObject())}
 console.log(similarObjects);
 
 
