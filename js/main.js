@@ -18,7 +18,6 @@ randomInteger(MIN_VALUE, MAX_VALUE);
 
 const ID_OBJECTS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 const LINKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-// const likes = _.random(15, 200);
 const COMENTS = ['Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -26,78 +25,54 @@ const COMENTS = ['Всё отлично!',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 
+const getRandomArrayElement = (elements) => {
+  return elements[randomInteger(1, ID_OBJECTS.length)];
+};
+
 const createObject = () => {
-
-  const getRandomArrayElement = (elements) => {
-    return elements[_.random(0, elements.length - 1)];
-  };
-
-  const getArrayElement = (elements) => {
-    for (let i = 0; i < ID_OBJECTS.length; i++) {
-      elements[i++]
-    }
-  };
 
   return {
     id: getRandomArrayElement(ID_OBJECTS),
     url: 'photos/' + getRandomArrayElement(LINKS) + '.jpg',
-    description: 'Нормальное описание к фото №' + getRandomArrayElement(LINKS),
-    likes: _.random(15, 200),
+    description: 'Нормальное описание к фото',
+    likes: randomInteger(15, 200),
     comments: {
       id: _.random(1, 200),
-      avatar: 'img/avatar' + _.random(1, 6) + '.svg',
+      avatar: 'img/avatar' + randomInteger(1, 6) + '.svg',
       message: getRandomArrayElement(COMENTS),
-      name: 'Артем' + _.random(1, 6),
+      name: 'Артем' + randomInteger(1, 6),
     },
   };
 };
 
-console.log(createObject());
+// console.log(createObject());
 
 const TOTAL_OBJECT = 25;
 
-const similarObjects = new Array(TOTAL_OBJECT).fill(null);
-// .map(() => createObject())
-const uniqObject = similarObjects;
-if (uniqObject !== similarObjects) {similarObjects.map(() => createObject())}
-console.log(similarObjects);
+const similarObjects = new Array(TOTAL_OBJECT).fill(null).map(() => createObject());
 
+similarObjects.forEach((element, index, array) => {
+  let isElementInclud = false;
+  array.forEach((el, ind) => {
+    if (element.url === el.url && element.id !== el.id) {
+      isElementInclud = true;
+    };
+  });
+  if (isElementInclud === true) {
+    element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
+  };
+  console.log(isElementInclud, element.url);
+});
 
+// Длина строки (авторская=))
 
-// // Длина строки (авторская=))
+const stringComment = 'Определенное количество символов';
+const lengthLimit = 140;
 
-// const stringComment = 'Определенное количество символов';
-// const lengthLimit = 140;
+const returnLengthString = function (current, max) {
+  return current.length <= max;
+};
 
-// const returnLengthString = function (current, max) {
-//   return current.length <= max;
-// };
+returnLengthString(stringComment, lengthLimit);
 
-// returnLengthString(stringComment, lengthLimit);
-
-// // Создаю пустые массивы
-// const idObjects = [];
-// const links = [];
-// const arrayLength = 25;
-// const likes = [];
-
-// // Вношу данные в массивы
-// for(i = 0; i < arrayLength; i++) Links.push(i);
-// for(i = 0; i < arrayLength; i++) idObjects.push(i);
-// for(i = 15; i < 250; i++) likes.push(i);
-
-
-// const createObject = () => {
-//   const randomIdIndex = randomInteger(0, idObjects.length);
-//   const randomUrlIndex = randomInteger(0, links.length);
-//   const randomLikeIndex = randomInteger(0, likes.length);
-
-//   return {
-//     id: idObjects[randomIdIndex],
-//     url: links[randomUrlIndex],
-//     description: '',
-//     likes: likes[randomLikeIndex],
-//     comments: '',
-//   };
-// };
 
