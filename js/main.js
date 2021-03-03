@@ -72,7 +72,10 @@ const createObject = () => {
 
 const TOTAL_OBJECT = 25;
 
-const similarObjects = new Array(TOTAL_OBJECT).fill(null).map(() => createObject());
+const getSimilarObjects = (object, total) => {
+  return new Array(total).fill(null).map(() => object());
+};
+
 
 // similarObjects.forEach((element, index, array) => {
 //   let isElementInclud = false;
