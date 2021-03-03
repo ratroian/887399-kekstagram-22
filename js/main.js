@@ -25,19 +25,42 @@ const COMENTS = ['Всё отлично!',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 
+
+const makeUniqueRandomIntegerGenerator = (min, max) => {
+  const previousValues = [];
+
+  return () => {
+    let currentValue = randomInteger(min, max);
+    if (previousValues.length >= (max - min + 1)) {
+      throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue = randomInteger(min, max);
+    }
+    previousValues.push(currentValue);
+    return currentValue;
+  };
+};
+
+const getUniqueRandomIntegerId = makeUniqueRandomIntegerGenerator(0, ID_OBJECTS.length - 1);
+const getUniqueRandomIntegerUrl = makeUniqueRandomIntegerGenerator(0, LINKS.length - 1);
+const getUniqueRandomIntegerCommentsId = makeUniqueRandomIntegerGenerator(1, 200);
+
+
+
 const getRandomArrayElement = (elements) => {
-  return elements[randomInteger(1, ID_OBJECTS.length)];
+  return elements[randomInteger(0, ID_OBJECTS.length)];
 };
 
 const createObject = () => {
 
   return {
-    id: getRandomArrayElement(ID_OBJECTS),
-    url: 'photos/' + getRandomArrayElement(LINKS) + '.jpg',
+    id: getUniqueRandomIntegerId(),
+    url: 'photos/' + getUniqueRandomIntegerUrl() + '.jpg',
     description: 'Нормальное описание к фото',
     likes: randomInteger(15, 200),
     comments: {
-      id: _.random(1, 200),
+      id: getUniqueRandomIntegerCommentsId(),
       avatar: 'img/avatar' + randomInteger(1, 6) + '.svg',
       message: getRandomArrayElement(COMENTS),
       name: 'Артем' + randomInteger(1, 6),
@@ -59,20 +82,25 @@ similarObjects.forEach((element, index, array) => {
     };
   });
   if (isElementInclud === true) {
-    element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
+    let uniqElement = element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
+    array.splice(element.url[index], 1, uniqElement);
+
   };
+
   console.log(isElementInclud, element.url);
 });
 
+
+
 // Длина строки (авторская=))
 
-const stringComment = 'Определенное количество символов';
-const lengthLimit = 140;
+// const stringComment = 'Определенное количество символов';
+// const lengthLimit = 140;
 
-const returnLengthString = function (current, max) {
-  return current.length <= max;
-};
+// const returnLengthString = function (current, max) {
+//   return current.length <= max;
+// };
 
-returnLengthString(stringComment, lengthLimit);
+// returnLengthString(stringComment, lengthLimit);
 
 
