@@ -74,21 +74,21 @@ const TOTAL_OBJECT = 25;
 
 const similarObjects = new Array(TOTAL_OBJECT).fill(null).map(() => createObject());
 
-similarObjects.forEach((element, index, array) => {
-  let isElementInclud = false;
-  array.forEach((el, ind) => {
-    if (element.url === el.url && element.id !== el.id) {
-      isElementInclud = true;
-    };
-  });
-  if (isElementInclud === true) {
-    let uniqElement = element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
-    array.splice(element.url[index], 1, uniqElement);
+// similarObjects.forEach((element, index, array) => {
+//   let isElementInclud = false;
+//   array.forEach((el, ind) => {
+//     if (element.url === el.url && element.id !== el.id) {
+//       isElementInclud = true;
+//     };
+//   });
+//   if (isElementInclud === true) {
+//     let uniqElement = element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
+//     array.splice(element.url[index], 1, uniqElement);
 
-  };
+//   };
 
-  console.log(isElementInclud, element.url);
-});
+//   console.log(isElementInclud, element.url);
+// });
 
 
 
