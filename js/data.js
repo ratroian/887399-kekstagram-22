@@ -38,17 +38,17 @@ const TOTAL_OBJECT = 25;
 
 const similarObjects =  new Array(TOTAL_OBJECT).fill(null).map(() => createObject());
 
-similarObjects.forEach((element, index, array) => {
+similarObjects.forEach((element, array) => {
   let isElementInclud = false;
-   array.forEach((el, ind) => {
+  array.forEach((el) => {
     if (element.url === el.url && element.id !== el.id) {
       isElementInclud = true;
     };
   });
-  // if (isElementInclud === true) {
-  //   element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
-  // };
-  // console.log(isElementInclud, element.url, element.id);
+  if (isElementInclud === true) {
+    element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
+  };
+  console.log(isElementInclud, element.url, element.id);
 });
 
 // console.log(similarObjects)
