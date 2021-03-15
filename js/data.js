@@ -1,5 +1,5 @@
 import {randomInteger} from './util.js';
-import {makeUniqueRandomIntegerGenerator} from './util.js'
+import {makeUniqueRandomIntegerGenerator} from './util.js';
 
 const ID_OBJECTS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 const LINKS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
@@ -43,12 +43,12 @@ similarObjects.forEach((element, array) => {
   array.forEach((el) => {
     if (element.url === el.url && element.id !== el.id) {
       isElementInclud = true;
-    };
+    }
   });
   if (isElementInclud === true) {
     element.url = 'photos/' + getRandomArrayElement(LINKS) + '.jpg';
-  };
-  console.log(isElementInclud, element.url, element.id);
+  }
+  // console.log(isElementInclud, element.url, element.id);
 });
 
 // console.log(similarObjects)

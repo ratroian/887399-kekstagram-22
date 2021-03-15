@@ -1,3 +1,6 @@
+export {randomInteger};
+export {makeUniqueRandomIntegerGenerator};
+
 // ---Генераци уникального значения---
 // Источник https://learn.javascript.ru/task/random-int-min-max
 
@@ -15,8 +18,6 @@ const randomInteger = function (min, max) {
 };
 
 randomInteger(MIN_VALUE, MAX_VALUE);
-
-export {randomInteger};
 
 // ---Массив уникальных значений---
 
@@ -36,7 +37,7 @@ const makeUniqueRandomIntegerGenerator = (min, max) => {
   };
 };
 
-export {makeUniqueRandomIntegerGenerator};
+
 
 // ---Длина строки (авторская=))---
 
