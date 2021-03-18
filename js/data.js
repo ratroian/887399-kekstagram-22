@@ -51,4 +51,4 @@ similarObjects.forEach((element, array) => {
   // console.log(isElementInclud, element.url, element.id);
 });
 
-// console.log(similarObjects)
+// console.log(similarObjects);
